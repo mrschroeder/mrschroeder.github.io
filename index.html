@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Access</title>
+</head>
+<body>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button onclick="requestCameraAccess()">Request Camera Access</button>
+
+    <script>
+        async function requestCameraAccess() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.getElementById("video");
+                video.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing camera:", error);
+            }
+        }
+    </script>
+</body>
+</html>
